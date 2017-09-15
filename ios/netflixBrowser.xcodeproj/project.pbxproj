@@ -1040,7 +1040,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rn.github;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redit.reactnative;
 				PRODUCT_NAME = netflixBrowser;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1075,7 +1075,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rn.github;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redit.reactnative;
 				PRODUCT_NAME = netflixBrowser;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

@@ -62,6 +62,8 @@ class PullRequestScreen extends Component {
 
   render() {
     const { isFetching } = this.props
+    const { pullRequests } = this.state
+
     if (isFetching) {
       return (
         <View style={BaseStyles.container}>
@@ -70,11 +72,19 @@ class PullRequestScreen extends Component {
       )
     }
 
+    if (pullRequests !== null && pullRequests.length === 0) {
+      return (
+        <View style={BaseStyles.container}>
+          <Text style={{textAlign: 'center'}}>Ooops!! There's nothing to show =(</Text>
+        </View>
+      )
+    }
+
     return (
       <View style={BaseStyles.container}>
         <NFFilterBar onFilter={(text) => this._onFilter(text)}/>
         <NFList
-          data={this.state.pullRequests}
+          data={pullRequests}
           card={(item) => this._renderCell(item)} 
         />
       </View>

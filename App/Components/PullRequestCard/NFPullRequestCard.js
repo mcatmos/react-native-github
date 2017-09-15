@@ -29,9 +29,10 @@ const renderReviewers = (requested_reviewers) => {
         <NFCardHeader label={'Reviewers'} />
         <View style={NFPullRequesCardtyles.rowSmallContainer}>
           {
-            requested_reviewers.map(reviewer => {
+            requested_reviewers.map((reviewer, index) => {
               return (
                 <Image 
+                  key={index}
                   source={{uri: reviewer.avatar_url}} 
                   resizeMode={'cover'} 
                   style={BaseStyles.avatarSmall}

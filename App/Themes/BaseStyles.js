@@ -15,7 +15,7 @@ const baseStyles = StyleSheet.create({
   },
   textInput: {
     borderColor: colors.grey,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 1,
     borderRadius: 5,
     padding: 10,
     marginVertical: 10,
@@ -28,9 +28,7 @@ const baseStyles = StyleSheet.create({
     padding: 20,
     backgroundColor: colors.white,
     borderRadius: 5,
-    marginHorizontal: 10,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.grey
+    marginHorizontal: 10
   },
   centered: {
     justifyContent: 'center',
@@ -57,6 +55,9 @@ const baseStyles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center', 
     padding: 30
+  },
+  textCentered: {
+    textAlign: 'center'
   }
 })
 

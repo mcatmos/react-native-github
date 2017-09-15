@@ -10,7 +10,8 @@ import { connect } from 'react-redux'
 import { 
   NFFilterBar, 
   NFList, 
-  NFCommentCard 
+  NFCommentCard,
+  NFTabStats
 } from '../../Components/'
 import { BaseStyles } from '../../Themes/'
 import { requestReviews } from '../../Redux/PullRequest/Actions/'
@@ -48,7 +49,7 @@ class PullRequestScreen extends Component {
   }
 
   render() {
-    const { isFetching } = this.props
+    const { isFetching, reviews } = this.props
 
     if (isFetching) {
       return (
@@ -58,10 +59,19 @@ class PullRequestScreen extends Component {
       )
     }
 
+    if (reviews !== null && reviews.length === 0) {
+      return (
+        <View style={BaseStyles.container}>
+          <Text style={BaseStyles.textCentered}>Ooops!! There's nothing to show =(</Text>
+        </View>
+      )
+    }
+
     return (
       <View style={BaseStyles.container}>
+        { reviews && reviews.length > 0 && <NFTabStats reviews={this.props.reviews} /> }
         <NFList
-          data={this.props.reviews}
+          data={reviews}
           card={(item) => this._renderCell(item)} 
         />
       </View>
