@@ -1,4 +1,4 @@
-package com.netflixbrowser;
+package com.githubreactnative;
 
 import android.app.Application;
 
