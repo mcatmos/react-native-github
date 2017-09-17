@@ -10,12 +10,11 @@ import {
 } from '../Actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
-export function* requestLogin(api, action) {
+export function* requestProfile(api, action) {
   const { 
-    username, 
-    password 
+    username
   } = action.payload
-  const response = yield call(api.requestLogin, username, password)
+  const response = yield call(api.requestLogin, username)
 
   if (response.ok) {
     

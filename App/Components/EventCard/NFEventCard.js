@@ -7,7 +7,11 @@ import {
   Linking
 } from 'react-native'
 
-import { Colors, BaseStyles } from '../../Themes/'
+import { 
+  Colors, 
+  BaseStyles, 
+  Fonts 
+} from '../../Themes/'
 import TimeAgo from '../../Utils/TimeHandler'
 import NFEventCardStyles from './Styles/Styles'
 
@@ -30,11 +34,11 @@ const NFEventCard = ({
           style={BaseStyles.avatarSmall}
         />
         <Text style={{paddingHorizontal: 5}}>
-          <Text style={[BaseStyles.cardTitle, {fontSize: 14}]}>{actor.display_login} </Text> 
+          <Text style={[BaseStyles.cardTitle, {fontSize: Fonts.size.regular}]}>{actor.display_login} </Text> 
           <Text>{type} to </Text> 
-          <Text style={[BaseStyles.cardTitle, {fontSize: 14}]}>{payload.ref} </Text> 
+          <Text style={[BaseStyles.cardTitle, {fontSize: Fonts.size.regular}]}>{payload.ref} </Text> 
           at
-          <Text style={[BaseStyles.cardTitle, {fontSize: 14}]}> {repo.name}</Text>
+          <Text style={[BaseStyles.cardTitle, {fontSize: Fonts.size.regular}]}> {repo.name}</Text>
         </Text>
       </View>
     </TouchableOpacity>

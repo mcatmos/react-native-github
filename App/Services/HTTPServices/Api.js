@@ -34,12 +34,17 @@ const initializeAPI = () => {
     return api.get(`/users/mcatmos/events/orgs/${owner}`)
   }
 
+  requestProfile = (username) => {
+    return api.get(`/users/mcatmos/events/orgs/${owner}`)
+  }
+
   return {
     requestLogin,
     requestRepos,
     requestPullRequests,
     requestReviews,
-    requestFeed
+    requestFeed,
+    requestProfile
   }
 }
 

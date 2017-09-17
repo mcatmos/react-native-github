@@ -4,6 +4,7 @@ import {
   Dimensions 
 } from 'react-native'
 import colors from './Colors'
+import fonts from './Fonts'
 const { width } = Dimensions.get('window')
 
 const baseStyles = StyleSheet.create({
@@ -46,10 +47,16 @@ const baseStyles = StyleSheet.create({
     height: 25, 
     marginHorizontal: 2
   },
+  avatarBig: {
+    borderRadius: 75, 
+    width: 150, 
+    height: 150, 
+    marginHorizontal: 2
+  },
   cardTitle: {
     color: colors.blue,
     fontWeight: 'bold',
-    fontSize: 16
+    fontSize: fonts.size.large
   },
   errorContainer: {
     justifyContent: 'center', 
@@ -58,6 +65,18 @@ const baseStyles = StyleSheet.create({
   },
   textCentered: {
     textAlign: 'center'
+  },
+  textDetail: {
+    fontSize: fonts.size.small,
+    color: colors.grey,
+    paddingBottom: 5
+  },
+  valueContainer: {
+    backgroundColor: colors.lightGrey,
+    padding: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20
   }
 })
 

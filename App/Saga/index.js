@@ -3,6 +3,9 @@ import API from '../Services/HTTPServices/Api'
 import {
   REQUEST_LOGIN
 } from '../Features/Login/Actions/'
+import {
+  REQUEST_PROFILE
+} from '../Features/Profile/Actions/'
 import { 
   REQUEST_REPOS
 } from '../Redux/Repos/Actions/'
@@ -16,6 +19,9 @@ import {
 import { 
   requestLogin 
 } from '../Features/Login/Saga/'
+import { 
+  requestProfile
+} from '../Features/Profile/Saga/'
 import { 
   requestRepos, 
 } from './Repos/'
@@ -35,6 +41,7 @@ export default function* root() {
     takeLatest(REQUEST_REPOS, requestRepos, api),
     takeLatest(REQUEST_PULLREQUEST, requestPullRequests, api),
     takeLatest(REQUEST_REVIEWS, requestReviews, api),
-    takeLatest(REQUEST_FEED, requestFeed, api)
+    takeLatest(REQUEST_FEED, requestFeed, api),
+    takeLatest(REQUEST_PROFILE, requestProfile, api)
   ])
 }

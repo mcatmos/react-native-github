@@ -6,7 +6,11 @@ import {
   TouchableOpacity,
   Linking
 } from 'react-native'
-import { Colors, BaseStyles } from '../../Themes/'
+import { 
+  Colors, 
+  BaseStyles, 
+  Fonts 
+} from '../../Themes/'
 
 import NFCommentCardStyles from './Styles/Styles'
 
@@ -30,7 +34,7 @@ const NFCommentCard = ({
         />
         <Text>{user.login}</Text>
       </View>
-      <Text style={[BaseStyles.cardTitle, {fontSize: 12}]}>{status}</Text>
+      <Text style={[BaseStyles.cardTitle, {fontSize: Fonts.small}]}>{status}</Text>
     </TouchableOpacity>
   )
 }

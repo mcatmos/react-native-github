@@ -9,14 +9,17 @@ import {
   Login,
   PullRequest,
   Reviews,
-  Feed
+  Feed,
+  Profile
 } from '../Features/'
 import { Colors } from '../Themes/'
 
 const NavigatorRouter = () => {
   return (
     <Router>
-      <Stack name="root">
+      <Stack 
+        hideNavBar={true}
+        name="root">
         <Scene
           navigationBarStyle={{backgroundColor: Colors.grey}}
           titleStyle={{color: Colors.white}}
@@ -27,43 +30,59 @@ const NavigatorRouter = () => {
           title={'GitHub React Native'}
         />
         <Scene
-          navigationBarStyle={{backgroundColor: Colors.grey}}
-          titleStyle={{color: Colors.white}}
-          key={'feed'}
-          back={false}
-          onBack={() => {}}
-          rightTitle={''}
-          onRight={() => {}}
-          headerBackTitle={''}
-          component={Feed}
-          title={'Home'}    
-        />
-        <Scene
-          navigationBarStyle={{backgroundColor: Colors.grey}}
-          titleStyle={{color: Colors.white}}
-          key={'home'}
-          back={false}
-          onBack={() => {}}
-          rightTitle={''}
-          onRight={() => {}}
-          headerBackTitle={''}
-          component={Home}
-          title={'Home'}    
-        />
-        <Scene
-          navigationBarStyle={{backgroundColor: Colors.grey}}
-          titleStyle={{color: Colors.white}}
-          key={'pullrequests'}
-          component={PullRequest}
-          title={'Pull Request'}    
-        />
-        <Scene
-          navigationBarStyle={{backgroundColor: Colors.grey}}
-          titleStyle={{color: Colors.white}}
-          key={'reviewspullrequests'}
-          component={Reviews}
-          title={'Reviews'}    
-        />
+            key="tabBar"
+            tabs={true}>
+            <Scene 
+              key="feed_tab"
+              tabBarLabel={'Feed'}>
+              <Scene
+                navigationBarStyle={{backgroundColor: Colors.grey}}
+                titleStyle={{color: Colors.white}}
+                key={'feed'}
+                back={false}
+                onBack={() => {}}
+                rightTitle={''}
+                onRight={() => {}}
+                headerBackTitle={''}
+                component={Feed}
+                title={'Feed'}    
+              />
+            </Scene>
+            <Scene 
+              key="home_tab"
+              tabBarLabel={'Home'}>
+              <Scene
+                navigationBarStyle={{backgroundColor: Colors.grey}}
+                titleStyle={{color: Colors.white}}
+                key={'home'}
+                back={false}
+                onBack={() => {}}
+                rightTitle={''}
+                onRight={() => {}}
+                headerBackTitle={''}
+                component={Home}
+                title={'Home'}    
+              />
+            </Scene>
+            <Scene 
+              key="profile_tab"
+              tabBarLabel={'Profile'}>
+              <Scene
+                navigationBarStyle={{backgroundColor: Colors.grey}}
+                titleStyle={{color: Colors.white}}
+                key={'profile'}
+                component={Profile}
+                title={'Profile'}    
+              />
+              <Scene
+                navigationBarStyle={{backgroundColor: Colors.grey}}
+                titleStyle={{color: Colors.white}}
+                key={'reviewspullrequests'}
+                component={Reviews}
+                title={'Pull Requests'}    
+              />
+            </Scene>
+        </Scene>
       </Stack>
     </Router>
   )

@@ -16,6 +16,7 @@ export function* requestPullRequests(api, action) {
     id
   } = action.payload
   const response = yield call(api.requestPullRequests, repo, owner)
+  console.log(response)
   if (response.ok) {
     yield put(successPullRequests(response, id))
   }
