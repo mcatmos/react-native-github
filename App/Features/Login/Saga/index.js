@@ -4,7 +4,10 @@ import {
   takeLatest, 
   all 
 } from 'redux-saga/effects'
-import { successLogin, failureLogin } from '../Actions/'
+import { 
+  successLogin, 
+  failureLogin 
+} from '../Actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 export function* requestLogin(api, action) {
@@ -15,8 +18,9 @@ export function* requestLogin(api, action) {
   const response = yield call(api.requestLogin, username, password)
 
   if (response.ok) {
+    
     yield put(successLogin(response))
-    NavigationActions.home()
+    NavigationActions.feed()
   } else {
     yield put(failureLogin())
   }

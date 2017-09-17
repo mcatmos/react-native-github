@@ -71,15 +71,7 @@ class PullRequestScreen extends Component {
         </View>
       )
     }
-
-    if (pullRequests !== null && pullRequests.length === 0) {
-      return (
-        <View style={BaseStyles.container}>
-          <Text style={{textAlign: 'center'}}>Ooops!! There's nothing to show =(</Text>
-        </View>
-      )
-    }
-
+    
     return (
       <View style={BaseStyles.container}>
         <NFFilterBar onFilter={(text) => this._onFilter(text)}/>

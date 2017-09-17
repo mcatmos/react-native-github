@@ -55,7 +55,8 @@ const renderAssignee = (assignee) => {
           <Image 
             source={{uri: assignee.avatar_url}} 
             resizeMode={'cover'} 
-            style={BaseStyles.avatarSmall}/>
+            style={BaseStyles.avatarSmall}
+          />
         </View>
       </View>
     )

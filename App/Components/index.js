@@ -6,3 +6,4 @@ export { default as NFPullRequestCard } from './PullRequestCard/NFPullRequestCar
 export { default as NFCardHeader } from './CardHeader/NFCardHeader'
 export { default as NFCommentCard } from './CommentCard/NFCommentCard'
 export { default as NFTabStats } from './TabStats/NFTabStats'
+export { default as NFEventCard } from './EventCard/NFEventCard'
