@@ -1,5 +1,5 @@
 export const REQUEST_FEED = 'REQUEST_FEED'
-export const SUCCESS_FEED = 'SUCCESS_PFEED'
+export const SUCCESS_FEED = 'SUCCESS_FEED'
 
 export const requestFeed = (owner) => {
   return {

@@ -79,6 +79,13 @@ const NavigatorRouter = () => {
                 component={Home}
                 title={'Home'}    
               />
+              <Scene
+                navigationBarStyle={{backgroundColor: Colors.grey}}
+                titleStyle={{color: Colors.white}}
+                key={'reviewspullrequests'}
+                component={PullRequest}
+                title={'Pull Requests'}    
+              />
             </Scene>
             <Scene 
               key="profile_tab"
@@ -90,13 +97,6 @@ const NavigatorRouter = () => {
                 key={'profile'}
                 component={Profile}
                 title={'Profile'}    
-              />
-              <Scene
-                navigationBarStyle={{backgroundColor: Colors.grey}}
-                titleStyle={{color: Colors.white}}
-                key={'reviewspullrequests'}
-                component={Reviews}
-                title={'Pull Requests'}    
               />
             </Scene>
         </Scene>

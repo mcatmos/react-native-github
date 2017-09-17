@@ -73,7 +73,7 @@ const baseStyles = StyleSheet.create({
   },
   valueContainer: {
     backgroundColor: colors.lightGrey,
-    padding: 3,
+    padding: 5,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20
