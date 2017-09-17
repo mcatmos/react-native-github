@@ -40,6 +40,7 @@ const NFEventCard = ({
           at
           <Text style={[BaseStyles.cardTitle, {fontSize: Fonts.size.regular}]}> {repo.name}</Text>
         </Text>
+        
       </View>
     </TouchableOpacity>
   )
