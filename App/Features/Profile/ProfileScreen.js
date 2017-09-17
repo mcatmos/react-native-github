@@ -9,7 +9,8 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 import { 
   NFUserCard,
-  NFSmallCard
+  NFSmallCard,
+  NFCollapsibleCard
 } from '../../Components/'
 import { BaseStyles } from '../../Themes/'
 import { requestProfile } from './Actions/'
@@ -23,17 +24,9 @@ class ProfileScreen extends Component {
 
   render() {
     const { 
-      isFetching, 
       profile 
     } = this.props
-    if (isFetching && this.props.Profile.length === 0) {
-      return (
-        <View style={BaseStyles.container}>
-          <ActivityIndicator />
-        </View>
-      )
-    }
-
+    
     return (
       <View style={[BaseStyles.container, {justifyContent: 'flex-start'}]}>
         <NFUserCard
@@ -49,12 +42,12 @@ class ProfileScreen extends Component {
           label={'Repositories'}
           value={profile.public_repos}
         />
-        <NFSmallCard 
+        <NFCollapsibleCard 
           icon={'organization'}
           label={'Followers'}
           value={profile.followers}
         />
-        <NFSmallCard 
+        <NFCollapsibleCard 
           icon={'organization'}
           label={'Following'}
           value={profile.following}
@@ -70,8 +63,7 @@ class ProfileScreen extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  profile: state.login.results,
-  isFetching: state.profile.isFetching
+  profile: state.login.results
 })
 
 export default connect(mapStateToProps, { 

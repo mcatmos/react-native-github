@@ -13,6 +13,18 @@ import {
   Profile
 } from '../Features/'
 import { Colors } from '../Themes/'
+import Icon from 'react-native-vector-icons/Octicons'
+
+const renderIcon = ({tintColor}, name) => {
+  return (
+    <Icon 
+      name={name}
+      style={{margin: 5}}
+      color={tintColor}
+      size={30}
+    />
+  )
+}
 
 const NavigatorRouter = () => {
   return (
@@ -31,10 +43,13 @@ const NavigatorRouter = () => {
         />
         <Scene
             key="tabBar"
-            tabs={true}>
+            tabs={true}
+            showLabel={false}
+            swipeEnabled={true}
+            activeTintColor={Colors.blue}>
             <Scene 
               key="feed_tab"
-              tabBarLabel={'Feed'}>
+              icon={(props) => renderIcon(props, 'flame')}>
               <Scene
                 navigationBarStyle={{backgroundColor: Colors.grey}}
                 titleStyle={{color: Colors.white}}
@@ -50,7 +65,8 @@ const NavigatorRouter = () => {
             </Scene>
             <Scene 
               key="home_tab"
-              tabBarLabel={'Home'}>
+              tabBarLabel={'Home'}
+              icon={(props) => renderIcon(props,'repo')}>
               <Scene
                 navigationBarStyle={{backgroundColor: Colors.grey}}
                 titleStyle={{color: Colors.white}}
@@ -66,7 +82,8 @@ const NavigatorRouter = () => {
             </Scene>
             <Scene 
               key="profile_tab"
-              tabBarLabel={'Profile'}>
+              tabBarLabel={'Profile'}
+              icon={(props) => renderIcon(props,'person')}>
               <Scene
                 navigationBarStyle={{backgroundColor: Colors.grey}}
                 titleStyle={{color: Colors.white}}
