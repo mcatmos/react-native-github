@@ -8,4 +8,4 @@ import {
 
 import Root from './App/Containers/Root'
 
-AppRegistry.registerComponent('netflixBrowser', () => Root);
+AppRegistry.registerComponent('githubReactNative', () => Root);

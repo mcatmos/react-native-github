@@ -15,6 +15,8 @@ class NFList extends Component {
         ListHeaderComponent={this.props.ListHeaderComponent}
         data={this.props.data}
         renderItem={(item) => this.props.card(item)}
+        onRefresh={this.props.onRefresh}
+        refreshing={this.props.refreshing}
       />
     )
   }

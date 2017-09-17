@@ -49,7 +49,7 @@ class HomeScreen extends Component {
         {...item} 
         key={index}
         requestRepo={
-          () => NavigationActions.pullrequests({id: item.id, repo: item.name, owner: item.owner.login})
+          () => NavigationActions.reviewspullrequests({id: item.id, repo: item.name, owner: item.owner.login})
         }
       />
     )

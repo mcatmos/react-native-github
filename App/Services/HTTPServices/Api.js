@@ -30,11 +30,21 @@ const initializeAPI = () => {
     return api.get(`/repos/${owner}/${repo}/pulls/${pullRequestId}/reviews`)
   }
 
+  requestFeed = (owner) => {
+    return api.get(`/users/mcatmos/events/orgs/${owner}`)
+  }
+
+  requestProfile = (username) => {
+    return api.get(`/users/mcatmos/events/orgs/${owner}`)
+  }
+
   return {
     requestLogin,
     requestRepos,
     requestPullRequests,
-    requestReviews
+    requestReviews,
+    requestFeed,
+    requestProfile
   }
 }
 

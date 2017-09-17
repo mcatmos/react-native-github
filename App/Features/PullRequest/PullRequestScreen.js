@@ -62,6 +62,8 @@ class PullRequestScreen extends Component {
 
   render() {
     const { isFetching } = this.props
+    const { pullRequests } = this.state
+
     if (isFetching) {
       return (
         <View style={BaseStyles.container}>
@@ -69,12 +71,12 @@ class PullRequestScreen extends Component {
         </View>
       )
     }
-
+    
     return (
       <View style={BaseStyles.container}>
         <NFFilterBar onFilter={(text) => this._onFilter(text)}/>
         <NFList
-          data={this.state.pullRequests}
+          data={pullRequests}
           card={(item) => this._renderCell(item)} 
         />
       </View>

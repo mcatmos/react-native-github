@@ -26,7 +26,6 @@ export const successPullRequests = (action, id) => {
 }
 
 export const requestReviews = (owner, repo, id, pullrequestId) => {
-  console.log(id)
   return {
     type: REQUEST_REVIEWS,
     payload: {
