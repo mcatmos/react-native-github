@@ -13,8 +13,8 @@ import {
   NFPullRequestCard 
 } from '../../Components/'
 import { BaseStyles } from '../../Themes/'
-import { requestPullRequests } from '../../Redux/PullRequest/Actions/'
-import { selectPullRequests } from '../../Redux/PullRequest/Selectors/'
+import { requestPullRequests } from './Actions/'
+import { selectPullRequests } from './Selectors/'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 

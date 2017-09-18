@@ -16,7 +16,6 @@ const INITIAL_STATE = Immutable({
 const repos = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case REQUEST_PULLREQUEST:
-    case REQUEST_REVIEWS:
       return {
         ...state,
         isFetching: true
@@ -29,19 +28,6 @@ const repos = (state = INITIAL_STATE, action) => {
         results: _.mapKeys(action.payload.results, 'id')
       }
     break
-    case SUCCESS_REVIEWS:
-    return {
-      ...state,
-      isFetching: false,
-      results: {
-        ...state.results,
-        [action.payload.pullrequestId]: {
-          ...state.results[action.payload.pullrequestId],
-          reviews_results: _.mapKeys(action.payload.results, 'id')
-        }
-      }
-    }
-  break
     default:
       return state
   }

@@ -1,7 +1,7 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects'
 import { 
   successRepos
-} from '../../Redux/Repos/Actions/'
+} from '../Actions/'
 
 export function* requestRepos(api) {
   const response = yield call(api.requestRepos)

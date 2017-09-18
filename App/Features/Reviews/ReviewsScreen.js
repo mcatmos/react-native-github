@@ -14,8 +14,8 @@ import {
   NFTabStats
 } from '../../Components/'
 import { BaseStyles } from '../../Themes/'
-import { requestReviews } from '../../Redux/PullRequest/Actions/'
-import { selectReviews } from '../../Redux/PullRequest/Selectors/'
+import { requestReviews } from './Actions/'
+import { selectReviews } from './Selectors/'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 

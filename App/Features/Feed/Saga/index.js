@@ -6,7 +6,7 @@ import {
 } from 'redux-saga/effects'
 import { 
   successFeed,
-} from '../../Redux/Feed/Actions/'
+} from '../Actions/'
 
 export function* requestFeed(api, action) {
   const { 

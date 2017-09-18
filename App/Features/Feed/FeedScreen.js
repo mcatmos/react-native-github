@@ -10,54 +10,56 @@ import { connect } from 'react-redux'
 import { 
   NFFilterBar, 
   NFList, 
-  NFReposCard 
+  NFEventCard
 } from '../../Components/'
 import { BaseStyles } from '../../Themes/'
-import { requestRepos, requestRepo } from '../../Redux/Repos/Actions/'
-import { selectRepos } from '../../Redux/Repos/Selectors/'
+import { requestFeed } from './Actions/'
+import { selectFeed } from './Selectors/'
 import { Actions as NavigationActions } from 'react-native-router-flux'
+import TimerMixin from 'react-timer-mixin'
 
 
-class HomeScreen extends Component {
+class FeedScreen extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      repos: null
+      updated: false,
+      isRefreshing: false
     }
   }
 
   componentDidMount() {
-    this.props.requestRepos()
+    this.props.requestFeed('fuseit')
+    TimerMixin.setInterval(() => this.update(), 60000);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({repos: nextProps.repos})
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.updated !== this.state.updated) {
+      this.props.requestFeed('fuseit')
+    }
   }
 
-  _onFilter({text}) {
-    const { repos } = this.props
-    const filteredAssets = repos.filter(repo => repo.full_name.toLowerCase().indexOf(text) !== -1);
+  update() {
     this.setState({
-      repos: _.values(filteredAssets)
+      updated: !this.state.updated
     })
   }
 
+
   _renderCell({item, index}) {
     return (
-      <NFReposCard 
-        {...item} 
-        key={index}
-        requestRepo={
-          () => NavigationActions.reviewspullrequests({id: item.id, repo: item.name, owner: item.owner.login})
-        }
-      />
+      <NFEventCard {...item}/>
     )
+  }
+
+  _onRefresh() {
+    this.props.requestFeed('fuseit')
   }
 
   render() {
     const { isFetching } = this.props
-    if (isFetching) {
+    if (isFetching && this.props.feed.length === 0) {
       return (
         <View style={BaseStyles.container}>
           <ActivityIndicator />
@@ -67,10 +69,11 @@ class HomeScreen extends Component {
 
     return (
       <View style={BaseStyles.container}>
-        <NFFilterBar onFilter={(text) => this._onFilter(text)}/>
         <NFList
-          data={this.state.repos}
+          data={this.props.feed}
           card={(item) => this._renderCell(item)} 
+          onRefresh={() => this._onRefresh()}
+          refreshing={this.state.isRefreshing}
         />
       </View>
     )
@@ -78,11 +81,10 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  repos: selectRepos(state),
-  isFetching: state.repos.isFetching
+  feed: selectFeed(state),
+  isFetching: state.feed.isFetching
 })
 
 export default connect(mapStateToProps, { 
-  requestRepos,
-  requestRepo
-})(HomeScreen)
+  requestFeed
+})(FeedScreen)
