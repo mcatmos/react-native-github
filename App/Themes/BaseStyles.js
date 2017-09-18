@@ -22,9 +22,6 @@ const baseStyles = StyleSheet.create({
     marginVertical: 10,
     width: 350
   },
-  label: {
-    fontWeight: 'bold'
-  },
   form: {
     padding: 20,
     backgroundColor: colors.white,
