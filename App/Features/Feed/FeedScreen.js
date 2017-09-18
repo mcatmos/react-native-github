@@ -58,11 +58,23 @@ class FeedScreen extends Component {
   }
 
   render() {
-    const { isFetching } = this.props
+    const { 
+      isFetching, 
+      error 
+    } = this.props
+
     if (isFetching && this.props.feed.length === 0) {
       return (
         <View style={BaseStyles.container}>
           <ActivityIndicator />
+        </View>
+      )
+    }
+
+    if (error) {
+      return (
+        <View style={BaseStyles.container}>
+          <Text>Oooops!</Text>
         </View>
       )
     }
@@ -82,7 +94,8 @@ class FeedScreen extends Component {
 
 const mapStateToProps = (state) => ({
   feed: selectFeed(state),
-  isFetching: state.feed.isFetching
+  isFetching: state.feed.isFetching,
+  error: state.feed.error
 })
 
 export default connect(mapStateToProps, { 

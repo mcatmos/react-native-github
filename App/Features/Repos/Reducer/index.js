@@ -2,18 +2,15 @@ import Immutable from 'seamless-immutable'
 import _ from 'lodash'
 import {
   REQUEST_REPOS,
-  REQUEST_PULLREQUEST,
   SUCCESS_REPOS,
-  SUCCESS_PULLREQUEST,
-  ERROR_REPOS,
-  REQUEST_COMMENTS,
-  SUCCESS_COMMENTS
+  FAILURE_REPOS,
 } from '../Actions/'
 
 const INITIAL_STATE = Immutable({
   isFetching: false,
   results: [],
-  page: 0
+  page: 0,
+  error: false
 })
 
 const repos = (state = INITIAL_STATE, action) => {
@@ -31,6 +28,12 @@ const repos = (state = INITIAL_STATE, action) => {
         results: _.mapKeys(action.payload.results, 'id')
       }
     break
+    case FAILURE_REPOS:
+      return {
+        ...state,
+        isFetching: false,
+        error: true
+      }
     default:
       return state
   }

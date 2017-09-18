@@ -5,7 +5,8 @@ import {
   all 
 } from 'redux-saga/effects'
 import {
-  successReviews
+  successPullRequests,
+  failurePullRequests
 } from '../Actions/'
 
 export function* requestPullRequests(api, action) {
@@ -17,5 +18,7 @@ export function* requestPullRequests(api, action) {
   const response = yield call(api.requestPullRequests, repo, owner)
   if (response.ok) {
     yield put(successPullRequests(response, id))
+  } else {
+    yield put(failurePullRequests(response.error))
   }
 }

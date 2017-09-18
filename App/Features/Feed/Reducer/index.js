@@ -2,13 +2,15 @@ import Immutable from 'seamless-immutable'
 import _ from 'lodash'
 import {
   REQUEST_FEED,
-  SUCCESS_FEED
+  SUCCESS_FEED,
+  FAILURE_FEED
 } from '../Actions/'
 
 const INITIAL_STATE = Immutable({
   isFetching: true,
   results: [],
-  page: 0
+  page: 0,
+  error: false
 })
 
 const feed = (state = INITIAL_STATE, action) => {
@@ -25,6 +27,13 @@ const feed = (state = INITIAL_STATE, action) => {
         ...state,
         isFetching: false,
         results: _.merge({}, state.results, feedMap)
+      }
+    break
+    case FAILURE_FEED:
+      return {
+        ...state,
+        isFetching: false,
+        error: true
       }
     break
     default:

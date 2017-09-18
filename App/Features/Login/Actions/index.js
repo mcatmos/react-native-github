@@ -22,7 +22,7 @@ export const successLogin = (action) => {
   }
 }
 
-export const failureLogin = () => {
+export const failureLogin = (action) => {
   return {
     type: ERROR_LOGIN,
     payload: {

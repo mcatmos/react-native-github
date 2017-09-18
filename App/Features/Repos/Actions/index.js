@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 export const REQUEST_REPOS = 'REQUEST_REPOS'
 export const SUCCESS_REPOS = 'SUCCESS_REPOS'
-export const ERROR_REPOS = 'ERROR_REPOS'
+export const FAILURE_REPOS = 'FAILURE_REPOS'
 
 export const requestRepos = () => {
   return {
@@ -16,6 +16,15 @@ export const successRepos = (action) => {
     type: SUCCESS_REPOS,
     payload: {
       results: data
+    }
+  }
+}
+
+export const failureRepos = (action) => {
+  return {
+    type: FAILURE_REPOS,
+    payload: {
+      error: true
     }
   }
 }

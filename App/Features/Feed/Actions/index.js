@@ -1,5 +1,6 @@
 export const REQUEST_FEED = 'REQUEST_FEED'
 export const SUCCESS_FEED = 'SUCCESS_FEED'
+export const FAILURE_FEED = 'FAILURE_FEED'
 
 export const requestFeed = (owner) => {
   return {
@@ -17,6 +18,15 @@ export const successFeed = (action, id) => {
     payload: {
       results: data,
       id: id
+    }
+  }
+}
+
+export const failureFeed = (action) => {
+  return {
+    type: FAILURE_FEED,
+    payload: {
+      error: true
     }
   }
 }

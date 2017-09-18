@@ -3,14 +3,14 @@ import _ from 'lodash'
 import {
   REQUEST_PULLREQUEST,
   SUCCESS_PULLREQUEST,
-  REQUEST_REVIEWS,
-  SUCCESS_REVIEWS
+  FAILURE_PULLREQUEST
 } from '../Actions/'
 
 const INITIAL_STATE = Immutable({
   isFetching: true,
   results: [],
-  page: 0
+  page: 0,
+  error: false
 })
 
 const repos = (state = INITIAL_STATE, action) => {
@@ -26,6 +26,13 @@ const repos = (state = INITIAL_STATE, action) => {
         ...state,
         isFetching: false,
         results: _.mapKeys(action.payload.results, 'id')
+      }
+    break
+    case FAILURE_PULLREQUEST: 
+      return {
+        ...state,
+        error: true,
+        isFetching: false
       }
     break
     default:
