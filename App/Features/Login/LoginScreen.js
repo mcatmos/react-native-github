@@ -23,8 +23,8 @@ class LoginScreen extends Component {
     super(props) 
 
     this.state = {
-      password: "FiaT-1991",
-      username: "mcatmos"
+      password: null,
+      username: null
     }
   }
 
