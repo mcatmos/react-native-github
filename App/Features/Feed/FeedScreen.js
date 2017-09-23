@@ -25,13 +25,18 @@ class FeedScreen extends Component {
 
     this.state = {
       updated: false,
-      isRefreshing: false
+      isRefreshing: false,
+      feed: null
     }
   }
 
   componentDidMount() {
     this.props.requestFeed('fuseit')
     TimerMixin.setInterval(() => this.update(), 60000);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({feed: nextProps.feed})
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -57,15 +62,29 @@ class FeedScreen extends Component {
     this.props.requestFeed('fuseit')
   }
 
+  _onFilter({text}) {
+    const { feed } = this.props
+    let filterText = text.toLowerCase()
+    const filteredAssets = feed.filter(item => item.actor.login.toLowerCase().indexOf(filterText) !== -1);
+    this.setState({
+      feed: _.values(filteredAssets)
+    })
+  }
+
   render() {
     const { 
       isFetching, 
-      error 
+      error
     } = this.props
+    
+    const {
+      feed
+    } = this.state
 
-    if (isFetching && this.props.feed.length === 0) {
+    if (isFetching && !feed) {
       return (
         <View style={BaseStyles.container}>
+          <NFFilterBar onFilter={(text) => this._onFilter(text)}/>
           <ActivityIndicator />
         </View>
       )
@@ -74,6 +93,7 @@ class FeedScreen extends Component {
     if (error) {
       return (
         <View style={BaseStyles.container}>
+          <NFFilterBar onFilter={(text) => this._onFilter(text)}/>
           <Text>Oooops!</Text>
         </View>
       )
@@ -81,8 +101,9 @@ class FeedScreen extends Component {
 
     return (
       <View style={BaseStyles.container}>
+        <NFFilterBar onFilter={(text) => this._onFilter(text)}/>
         <NFList
-          data={this.props.feed}
+          data={feed}
           card={(item) => this._renderCell(item)} 
           onRefresh={() => this._onRefresh()}
           refreshing={this.state.isRefreshing}

@@ -11,7 +11,8 @@ import { BaseStyles } from '../../../Themes/'
 const NFLoginForm = ({
   action,
   setUserName,
-  setPassword
+  setPassword,
+  isFetching
 }) => {
   return (
     <View style={BaseStyles.form}>
@@ -29,6 +30,7 @@ const NFLoginForm = ({
       <NFLargeButton 
         action={() => action()}
         label={'Login'}
+        isFetching={isFetching}
       />
     </View>
   )

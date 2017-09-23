@@ -25,8 +25,7 @@ export const successReviews = (action, repo, pullrequestId) => {
   }
 }
 
-export const failureReviews = (action) => {
-  const { error } = action
+export const failureReviews = (error) => {
   return {
     type: FAILURE_REVIEWS,
     payload: {
