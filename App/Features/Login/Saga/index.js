@@ -15,6 +15,7 @@ export function* requestLogin(api, action) {
     username, 
     password 
   } = action.payload
+  NavigationActions.tabBar()
   const response = yield call(api.requestLogin, username, password)
 
   if (response.ok) {
@@ -23,5 +24,6 @@ export function* requestLogin(api, action) {
     NavigationActions.tabBar()
   } else {
     yield put(failureLogin())
+    NavigationActions.tabBar()
   }
 }

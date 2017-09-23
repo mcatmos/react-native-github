@@ -8,14 +8,16 @@ import {
 } from '../Features/Profile/Actions/'
 import { 
   REQUEST_REPOS
-} from '../Redux/Repos/Actions/'
+} from '../Features/Repos/Actions/'
 import {
-  REQUEST_PULLREQUEST, 
+  REQUEST_PULLREQUEST
+} from '../Features/PullRequest/Actions/'
+import {
   REQUEST_REVIEWS
-} from '../Redux/PullRequest/Actions/'
+} from '../Features/Reviews/Actions/'
 import {
   REQUEST_FEED
-} from '../Redux/Feed/Actions/'
+} from '../Features/Feed/Actions/'
 import { 
   requestLogin 
 } from '../Features/Login/Saga/'
@@ -24,14 +26,16 @@ import {
 } from '../Features/Profile/Saga/'
 import { 
   requestRepos, 
-} from './Repos/'
+} from '../Features/Repos/Saga/'
 import {
-  requestPullRequests, 
-  requestReviews 
-} from './PullRequest'
+  requestPullRequests
+} from '../Features/PullRequest/Saga/'
 import {
   requestFeed
-} from './Feed'
+} from '../Features/Feed/Saga/'
+import {
+  requestReviews
+} from '../Features/Reviews/Saga/'
 
 const api = API.initializeAPI()
 

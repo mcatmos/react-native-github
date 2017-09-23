@@ -19,16 +19,8 @@ export default class TimeAgo extends Component {
   }
 
   componentDidMount() {
-    const { interval } = this.props;
-
-    /*Using bare setTimeout, setInterval, setImmediate and requestAnimationFrame calls is very dangerous
-      because if you forget to cancel the request before the component is unmounted, you risk the callback
-      throwing an exception.
-      If you include TimerMixin, then you can replace your calls to setTimeout(fn, 500)
-      with TimerMixin.setTimeout(fn, 500) (just prepend this.) and everything will be p
-      roperly cleaned up for you.*/
-
-    TimerMixin.setInterval(() => this.update(), interval);
+    const { interval } = this.props
+    TimerMixin.setInterval(() => this.update(), interval)
   }
 
   update() {

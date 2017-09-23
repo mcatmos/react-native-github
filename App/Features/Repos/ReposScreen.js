@@ -10,51 +10,46 @@ import { connect } from 'react-redux'
 import { 
   NFFilterBar, 
   NFList, 
-  NFPullRequestCard 
+  NFReposCard 
 } from '../../Components/'
 import { BaseStyles } from '../../Themes/'
-import { requestPullRequests } from './Actions/'
-import { selectPullRequests } from './Selectors/'
+import { requestRepos, requestRepo } from './Actions/'
+import { selectRepos } from './Selectors/'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 
-class PullRequestScreen extends Component {
+class ReposScreen extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      pullRequests: null
+      repos: null
     }
   }
 
   componentDidMount() {
-    const { id, repo, owner } = this.props
-    this.props.requestPullRequests(id, repo, owner)
+    this.props.requestRepos()
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({pullRequests: nextProps.pullRequests})
+    this.setState({repos: nextProps.repos})
   }
 
   _onFilter({text}) {
-    const { pullRequests } = this.props
-    const filteredAssets = pullRequests.filter(repo => repo.title.toLowerCase().indexOf(text) !== -1);
+    const { repos } = this.props
+    const filteredAssets = repos.filter(repo => repo.full_name.toLowerCase().indexOf(text) !== -1);
     this.setState({
-      pullRequests: _.values(filteredAssets)
+      repos: _.values(filteredAssets)
     })
   }
 
   _renderCell({item, index}) {
     return (
-      <NFPullRequestCard 
-        {...item}
-        key={index} 
-        requestRepo={() => NavigationActions.reviewspullrequests({
-          repo: this.props.repo,
-          owner: this.props.owner,
-          id: item.number,
-          pullrequestId: item.id
-          })
+      <NFReposCard 
+        {...item} 
+        key={index}
+        requestRepo={
+          () => NavigationActions.reviewspullrequests({id: item.id, repo: item.name, owner: item.owner.login})
         }
       />
     )
@@ -62,8 +57,6 @@ class PullRequestScreen extends Component {
 
   render() {
     const { isFetching } = this.props
-    const { pullRequests } = this.state
-
     if (isFetching) {
       return (
         <View style={BaseStyles.container}>
@@ -71,12 +64,12 @@ class PullRequestScreen extends Component {
         </View>
       )
     }
-    
+
     return (
       <View style={BaseStyles.container}>
         <NFFilterBar onFilter={(text) => this._onFilter(text)}/>
         <NFList
-          data={pullRequests}
+          data={this.state.repos}
           card={(item) => this._renderCell(item)} 
         />
       </View>
@@ -84,11 +77,12 @@ class PullRequestScreen extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  pullRequests: selectPullRequests(state, props.pullRequestId),
-  isFetching: state.pull_requests.isFetching
+const mapStateToProps = (state) => ({
+  repos: selectRepos(state),
+  isFetching: state.repos.isFetching
 })
 
 export default connect(mapStateToProps, { 
-  requestPullRequests
-})(PullRequestScreen)
+  requestRepos,
+  requestRepo
+})(ReposScreen)

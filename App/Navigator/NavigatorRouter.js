@@ -5,7 +5,7 @@ import {
   Stack
 } from 'react-native-router-flux'
 import {
-  Home,
+  Repos,
   Login,
   PullRequest,
   Reviews,
@@ -64,20 +64,20 @@ const NavigatorRouter = () => {
               />
             </Scene>
             <Scene 
-              key="home_tab"
-              tabBarLabel={'Home'}
+              key="repos_tab"
+              tabBarLabel={'Repos'}
               icon={(props) => renderIcon(props,'repo')}>
               <Scene
                 navigationBarStyle={{backgroundColor: Colors.grey}}
                 titleStyle={{color: Colors.white}}
-                key={'home'}
+                key={'repos'}
                 back={false}
                 onBack={() => {}}
                 rightTitle={''}
                 onRight={() => {}}
                 headerBackTitle={''}
-                component={Home}
-                title={'Home'}    
+                component={Repos}
+                title={'Repos'}    
               />
               <Scene
                 navigationBarStyle={{backgroundColor: Colors.grey}}
