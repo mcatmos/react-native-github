@@ -31,8 +31,9 @@ export default (rootReducer) => {
 
   const store = createStore(rootReducer, compose(...enhancers))
 
-  RehydrationServices.updateReducers(store)
   sagaMiddleware.run(root)
 
+  RehydrationServices.updateReducers(store)
+  
   return store
 }

@@ -1,4 +1,5 @@
 import Immutable from 'seamless-immutable'
+import _ from 'lodash'
 import {
   SUCCESS_REVIEWS,
   REQUEST_REVIEWS,

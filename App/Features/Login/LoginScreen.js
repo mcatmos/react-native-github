@@ -44,12 +44,13 @@ class LoginScreen extends Component {
 
   render() {
     const { username, password } = this.state
-    const { error } = this.props
+    const { error, isFetching } = this.props
     return (
       <View style={[BaseStyles.container]}>
         <NFLogo image={'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png'} />
         <NFLoginForm 
           action={() => this._validateForm(username, password)}
+          isFetching={isFetching}
           setUserName={(username) => this.setState({username: username})}
           setPassword={(password) => this.setState({password: password})}
         />
@@ -60,7 +61,8 @@ class LoginScreen extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  error: state.login.error
+  error: state.login.error,
+  isFetching: state.login.isFetching
 })
 
 export default connect(mapStateToProps, { 

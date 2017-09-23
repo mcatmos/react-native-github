@@ -27,10 +27,10 @@ const NFSmallCard = ({
           color={Colors.grey}
           style={styles.icon} 
         />
-        <Text>{label}</Text>
+        <Text style={styles.label}>{label}</Text>
       </View>
       <View style={BaseStyles.valueContainer}>
-        <Text style={{fontWeight: Fonts.type.bold}}>{value}</Text>
+        <Text style={styles.value}>{value}</Text>
       </View>
     </View>
   )
@@ -51,6 +51,13 @@ const styles = StyleSheet.create({
   },
   icon: {
     paddingRight: 5
+  },
+  label: {
+    color: Colors.grey
+  },
+  value: {
+    fontWeight: Fonts.type.bold, 
+    color: Colors.grey
   }
 })
 

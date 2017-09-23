@@ -23,11 +23,11 @@ const NFUserCard = ({
       <Image source={{uri: avatarUrl}} style={BaseStyles.avatarBig}/>
       <View style={styles.rightContainer}>
         <Text style={BaseStyles.cardTitle}>{name}</Text>
-        <Text>{login}</Text>
-        <Text numberOfLines={4} style={{paddingVertical: 10}}>{bio}</Text>
+        <Text style={styles.text}>{login}</Text>
+        <Text numberOfLines={4} style={[styles.text,{paddingVertical: 10}]}>{bio}</Text>
         <View style={{flexDirection:'row', alignItems: 'center'}}>
           <Icon name='location' size={20} color={Colors.grey}/>
-          <Text>{location}</Text>
+          <Text style={styles.text}>{location}</Text>
         </View>
       </View>
     </View>
@@ -49,6 +49,9 @@ const styles = StyleSheet.create({
     flex: 1, 
     justifyContent: 'center', 
     paddingLeft: 10
+  },
+  text: {
+    color: Colors.grey
   }
 })
 

@@ -49,7 +49,7 @@ class ReposScreen extends Component {
         {...item} 
         key={index}
         requestRepo={
-          () => NavigationActions.reviewspullrequests({id: item.id, repo: item.name, owner: item.owner.login})
+          () => NavigationActions.pullrequests({id: item.id, repo: item.name, owner: item.owner.login})
         }
       />
     )

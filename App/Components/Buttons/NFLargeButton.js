@@ -2,19 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   TouchableOpacity,
-  Text
+  Text,
+  ActivityIndicator
 } from 'react-native'
 import NFLargeButtonStyles from './Styles/NFLargeButtonStyles'
 
 const NFLargeButton = ({
   label,
-  action
+  action,
+  isFetching
 }) => {
+
+  const child = isFetching ? <ActivityIndicator /> : <Text style={NFLargeButtonStyles.label}>{label}</Text>
+
   return (
     <TouchableOpacity 
       style={NFLargeButtonStyles.container} 
       onPress={action}>
-      <Text style={NFLargeButtonStyles.label}>{label}</Text>
+      {child}
     </TouchableOpacity>
   )
 }

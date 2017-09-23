@@ -17,21 +17,21 @@ const login = (state = INITIAL_STATE, action) => {
     case REQUEST_LOGIN:
       return {
         ...state,
-        fetching: true,
+        isFetching: true,
         error: false
       }
     break
     case SUCCESS_LOGIN: 
       return {
         ...state,
-        fetching: false,
+        isFetching: false,
         results: action.payload.results
       }
     break
     case ERROR_LOGIN:
       return {
         ...state,
-        fetching: false,
+        isFetching: false,
         error: true
       }
     default:

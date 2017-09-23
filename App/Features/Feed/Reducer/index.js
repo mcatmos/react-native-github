@@ -18,7 +18,7 @@ const feed = (state = INITIAL_STATE, action) => {
     case REQUEST_FEED:
       return {
         ...state,
-        isFetching: true
+        isFetching: false
       }
     break
     case SUCCESS_FEED:

@@ -82,8 +82,15 @@ const NavigatorRouter = () => {
               <Scene
                 navigationBarStyle={{backgroundColor: Colors.grey}}
                 titleStyle={{color: Colors.white}}
-                key={'reviewspullrequests'}
+                key={'pullrequests'}
                 component={PullRequest}
+                title={'Pull Requests'}    
+              />
+              <Scene
+                navigationBarStyle={{backgroundColor: Colors.grey}}
+                titleStyle={{color: Colors.white}}
+                key={'reviewspullrequests'}
+                component={Reviews}
                 title={'Pull Requests'}    
               />
             </Scene>
